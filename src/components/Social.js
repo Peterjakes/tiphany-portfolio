@@ -1,4 +1,11 @@
+import { motion } from "framer-motion";
 import { IMG } from "../images";
+
+// Shared fade-up animation variant, consistent with Hero.jsx and About.jsx
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
 
 // Social channel data — each entry drives one card in the grid below
 const channels = [
@@ -10,34 +17,49 @@ const channels = [
 
 export function Social() {
   return (
-    <section id="social" className="relative flex min-h-screen flex-col px-6 py-10 md:px-12">
+    <motion.section
+      id="social"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
+      className="relative flex min-h-screen flex-col px-6 py-10 md:px-12"
+    >
       {/* Decorative vertical line marker on the left, purely visual */}
       <div className="absolute left-6 top-1/4 flex flex-col items-center gap-2 md:left-12">
         <span className="h-6 w-6 rounded-full bg-ink" />
         <span className="h-64 w-1.5 rounded-full bg-brand" />
       </div>
 
-      {/* Section heading, offset right to clear the decorative line */}
-      <h2 className="ml-16 font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand md:ml-24">
+      {/* Section heading, fades up on scroll into view */}
+      <motion.h2
+        variants={fadeUp}
+        className="ml-16 font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand md:ml-24"
+      >
         SOCIAL MEDIA
         <br />
         CHANNELS
-      </h2>
+      </motion.h2>
 
       {/* Follow / Message call-to-action buttons */}
-      <div className="ml-16 mt-6 flex gap-3 md:ml-24">
+      <motion.div variants={fadeUp} className="ml-16 mt-6 flex gap-3 md:ml-24">
         <button className="rounded-full bg-brand px-6 py-2 text-xs font-bold uppercase tracking-widest text-brand-foreground">
           Follow
         </button>
         <button className="rounded-full bg-brand px-6 py-2 text-xs font-bold uppercase tracking-widest text-brand-foreground">
           Message
         </button>
-      </div>
+      </motion.div>
 
-      {/* Channel cards grid — 2 columns on mobile, 4 on desktop */}
+      {/* Channel cards — each card fades up individually, staggered via
+          the parent section's staggerChildren */}
       <div className="mt-auto grid grid-cols-2 gap-8 pt-10 md:grid-cols-4">
         {channels.map((c) => (
-          <div key={c.platform} className="flex flex-col items-center text-center">
+          <motion.div
+            key={c.platform}
+            variants={fadeUp}
+            className="flex flex-col items-center text-center"
+          >
             <div className="aspect-square w-full max-w-[180px] overflow-hidden rounded-full ring-4 ring-brand ring-offset-4 ring-offset-paper">
               <img src={c.img} alt={c.platform} className="h-full w-full object-cover" />
             </div>
@@ -46,9 +68,9 @@ export function Social() {
             </p>
             <p className="text-sm font-bold text-ink">{c.handle}</p>
             <p className="font-display text-3xl font-black text-brand">{c.count}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
