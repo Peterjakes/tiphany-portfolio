@@ -1,9 +1,23 @@
 import { motion } from "framer-motion";
 import { IMG } from "../images";
 
+// Shared fade-up animation variant for staggered text entrance,
+// mirrors the one used in Hero.js for a consistent feel site-wide
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
 export function About() {
   return (
-    <section id="about" className="relative flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center md:px-12">
+    <motion.section
+      id="about"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
+      className="relative flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center md:px-12"
+    >
       {/* "4+ Years" badge — springs in with a slight overshoot for a playful pop */}
       <motion.div
         initial={{ scale: 0, rotate: 20 }}
@@ -15,8 +29,7 @@ export function About() {
         4+ Years
       </motion.div>
 
-      {/* "Digital Content" badge — same spring treatment, delayed slightly
-          after the first badge so they don't land simultaneously */}
+      {/* "Digital Content" badge */}
       <motion.div
         initial={{ scale: 0, rotate: -25 }}
         whileInView={{ scale: 1, rotate: -10 }}
@@ -27,7 +40,7 @@ export function About() {
         Digital Content
       </motion.div>
 
-      {/* Floating photo — slides in from the left as it enters view */}
+      {/* Floating photo — left */}
       <motion.div
         initial={{ opacity: 0, rotate: -20, x: -40 }}
         whileInView={{ opacity: 1, rotate: -8, x: 0 }}
@@ -38,7 +51,7 @@ export function About() {
         <img src={IMG.sunlitSmile} alt="" className="h-44 w-36 rounded-2xl object-cover" />
       </motion.div>
 
-      {/* Floating photo — slides in from the right, mirroring the left one */}
+      {/* Floating photo — right */}
       <motion.div
         initial={{ opacity: 0, rotate: 20, x: 40 }}
         whileInView={{ opacity: 1, rotate: 10, x: 0 }}
@@ -49,26 +62,37 @@ export function About() {
         <img src={IMG.cafeJacket} alt="" className="h-44 w-36 rounded-2xl object-cover" />
       </motion.div>
 
-      <h2 className="font-display text-[clamp(3.5rem,12vw,10rem)] font-black uppercase leading-none text-brand">
+      {/* Text content now fades up as a staggered group via the parent's variants */}
+      <motion.h2
+        variants={fadeUp}
+        className="font-display text-[clamp(3.5rem,12vw,10rem)] font-black uppercase leading-none text-brand"
+      >
         ABOUT ME
-      </h2>
-      <div className="mt-6 font-display text-2xl font-black uppercase text-ink md:text-3xl">
+      </motion.h2>
+      <motion.div
+        variants={fadeUp}
+        className="mt-6 font-display text-2xl font-black uppercase text-ink md:text-3xl"
+      >
         <span className="inline-block rounded-full bg-brand/10 px-4 py-1.5 text-brand">
           WHO I AM?
         </span>
-      </div>
-      <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-ink md:text-lg">
+      </motion.div>
+      <motion.p
+        variants={fadeUp}
+        className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-ink md:text-lg"
+      >
         I'm Tiphany W., a Beauty, Lifestyle, Fashion & Food content creator based in Nairobi, Kenya.
         I create authentic, aesthetic content that connects brands with real audiences.
-      </p>
-      
-       <a href="https://instagram.com/wawer.u._"
+      </motion.p>
+      <motion.a
+        variants={fadeUp}
+        href="https://instagram.com/wawer.u._"
         target="_blank"
         rel="noreferrer"
         className="mt-8 inline-block rounded-full bg-ink px-8 py-3 text-sm font-bold uppercase tracking-widest text-paper transition-transform hover:scale-105"
       >
         wawer.u._
-      </a>
-    </section>
+      </motion.a>
+    </motion.section>
   );
 }
