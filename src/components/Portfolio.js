@@ -1,5 +1,12 @@
+import { motion } from "framer-motion";
 import { Eye, Heart, MessageCircle } from "lucide-react";
 import { IMG } from "../images";
+
+// Shared fade-up animation variant, consistent across all sections
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
 
 // Featured content pieces with engagement stats for each
 const cards = [
@@ -20,28 +27,44 @@ function Stat({ icon, value }) {
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="flex min-h-screen flex-col px-6 py-10 md:px-12">
+    <motion.section
+      id="portfolio"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
+      className="flex min-h-screen flex-col px-6 py-10 md:px-12"
+    >
       {/* Heading + "Performance Highlights" tag */}
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 className="font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand">
+        <motion.h2
+          variants={fadeUp}
+          className="font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand"
+        >
           CONTENT
           <br />
           PORTFOLIO
-        </h2>
-        <span className="rounded-full bg-[oklch(0.85_0.07_245)] px-5 py-2 text-xs font-bold uppercase tracking-widest text-ink">
+        </motion.h2>
+        <motion.span
+          variants={fadeUp}
+          className="rounded-full bg-[oklch(0.85_0.07_245)] px-5 py-2 text-xs font-bold uppercase tracking-widest text-ink"
+        >
           Performance Highlights
-        </span>
+        </motion.span>
       </div>
 
-      {/* Content cards row — decorative filler blocks on either end at
-          desktop width give the row a "carousel" feel without needing
-          actual scroll/carousel logic */}
+      {/* Content cards row — each card fades up on scroll, with a staggered
+          delay per index so they don't all land at once, plus a subtle
+          lift-on-hover for interactivity */}
       <div className="relative mt-10 flex flex-1 items-center justify-center gap-5 overflow-hidden">
         <div className="hidden h-[60%] w-24 shrink-0 rounded-[2rem] bg-[oklch(0.86_0.005_60)] opacity-50 md:block" />
 
-        {cards.map((c) => (
-          <div
+        {cards.map((c, i) => (
+          <motion.div
             key={c.label}
+            variants={fadeUp}
+            whileHover={{ y: -8 }}
+            transition={{ delay: i * 0.1 }}
             className="flex w-full max-w-[260px] flex-1 flex-col gap-3 rounded-[2rem] bg-paper p-4 shadow-xl ring-1 ring-ink/10"
           >
             <span className="text-center text-[11px] font-black uppercase tracking-widest text-ink">
@@ -55,11 +78,11 @@ export function Portfolio() {
               <Stat icon={<Heart className="h-3 w-3" />} value={c.likes} />
               <Stat icon={<MessageCircle className="h-3 w-3" />} value={c.comments} />
             </div>
-          </div>
+          </motion.div>
         ))}
 
         <div className="hidden h-[60%] w-24 shrink-0 rounded-[2rem] bg-[oklch(0.86_0.005_60)] opacity-50 md:block" />
       </div>
-    </section>
+    </motion.section>
   );
 }
