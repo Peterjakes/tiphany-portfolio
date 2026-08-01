@@ -1,4 +1,12 @@
-// Content packages — synced with the official rate card
+import { motion } from "framer-motion";
+
+// Shared fade-up animation variant, consistent across all sections
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
+// Content packages -synced with the official rate card
 const services = [
   { name: "Starter Glow", price: "15,000", desc: "1 Instagram Reel + Stories" },
   { name: "Beauty Boost", price: "18,000", desc: "Reel + Static Post + Stories" },
@@ -10,21 +18,34 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="flex min-h-screen flex-col items-center px-6 py-10 text-center md:px-12">
-      <h2 className="font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand">
+    <motion.section
+      id="services"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
+      className="flex min-h-screen flex-col items-center px-6 py-10 text-center md:px-12"
+    >
+      <motion.h2
+        variants={fadeUp}
+        className="font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand"
+      >
         SERVICES &<br />
         PRICELIST
-      </h2>
-      <p className="mt-4 text-sm font-bold uppercase tracking-[0.3em] text-ink">
+      </motion.h2>
+      <motion.p variants={fadeUp} className="mt-4 text-sm font-bold uppercase tracking-[0.3em] text-ink">
         Let's work together
-      </p>
+      </motion.p>
 
-      {/* Package cards — highlighted package gets inverted brand colors
-          to stand out as the recommended tier */}
+      {/* Package cards — each fades up on scroll and lifts slightly on
+          hover; highlighted package gets inverted brand colors to stand
+          out as the recommended tier */}
       <div className="mt-10 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => (
-          <div
+          <motion.div
             key={s.name}
+            variants={fadeUp}
+            whileHover={{ y: -8 }}
             className={`flex flex-col items-center rounded-[2rem] p-5 text-left shadow-lg ring-1 ${
               s.highlight ? "bg-brand text-brand-foreground ring-brand" : "bg-paper text-ink ring-ink/10"
             }`}
@@ -49,13 +70,13 @@ export function Services() {
             >
               Inquire
             </a>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      <p className="mt-8 max-w-xl text-xs italic text-ink/60">
+      <motion.p variants={fadeUp} className="mt-8 max-w-xl text-xs italic text-ink/60">
         Rates are adjustable depending on campaign scope, usage rights, and exclusivity.
-      </p>
-    </section>
+      </motion.p>
+    </motion.section>
   );
 }
