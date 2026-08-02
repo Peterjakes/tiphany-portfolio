@@ -1,5 +1,12 @@
+import { motion } from "framer-motion";
 import { ThumbsUp } from "lucide-react";
 import { IMG } from "../images";
+
+// Shared fade-up animation variant, consistent across all sections
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
 
 // Small decorative sticker used to scatter playful thumbs-up icons
 // around the section — position/rotation passed per instance
@@ -16,34 +23,58 @@ function ThumbsUpSticker({ className = "", rotate = 0 }) {
 
 export function ThankYou() {
   return (
-    <section id="thanks" className="relative flex min-h-screen flex-col justify-center px-6 py-10 md:px-12">
+    <motion.section
+      id="thanks"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
+      className="relative flex min-h-screen flex-col justify-center px-6 py-10 md:px-12"
+    >
       <ThumbsUpSticker className="left-10 top-16" rotate={-15} />
       <ThumbsUpSticker className="right-10 top-24" rotate={12} />
       <ThumbsUpSticker className="bottom-32 left-1/3" rotate={6} />
 
-      {/* Big closing headline + photo */}
+      {/* Big closing headline fades up; photo scales/slides in
+          independently once it enters the viewport */}
       <div className="relative grid grid-cols-1 items-center gap-6 md:grid-cols-[1.6fr_1fr]">
-        <h2 className="font-display text-[clamp(4rem,16vw,14rem)] font-black uppercase leading-[0.85] text-brand">
+        <motion.h2
+          variants={fadeUp}
+          className="font-display text-[clamp(4rem,16vw,14rem)] font-black uppercase leading-[0.85] text-brand"
+        >
           THANK
           <br />
           YOU
-        </h2>
-        <div className="md:-ml-24">
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, x: 40 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="md:-ml-24"
+        >
           <div className="aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[3rem]">
             <img src={IMG.sunlitSmile} alt="" className="h-full w-full object-cover" />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Closing call-to-action pill */}
-      <div className="mt-8 text-center font-display text-lg font-black uppercase md:text-2xl">
+      <motion.div
+        variants={fadeUp}
+        className="mt-8 text-center font-display text-lg font-black uppercase md:text-2xl"
+      >
         <span className="inline-block rounded-full bg-brand/10 px-4 py-1.5 text-brand">
           LET'S CREATE GREAT CONTENT TOGETHER!
         </span>
-      </div>
+      </motion.div>
 
       {/* Contact bar — email, handle, and Instagram link */}
-      <div className="mt-auto flex flex-col items-center justify-between gap-3 rounded-2xl bg-ink px-6 py-4 text-paper md:flex-row">
+      <motion.div
+        variants={fadeUp}
+        className="mt-auto flex flex-col items-center justify-between gap-3 rounded-2xl bg-ink px-6 py-4 text-paper md:flex-row"
+      >
+        
         <a
           href="mailto:tiphy.waweru2002@gmail.com"
           className="text-xs font-semibold uppercase tracking-wider hover:text-brand"
@@ -61,7 +92,7 @@ export function ThankYou() {
         >
           Instagram →
         </a>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
