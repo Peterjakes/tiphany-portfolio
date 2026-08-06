@@ -1,5 +1,6 @@
+import { motion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
-import { BlueOval, OrangePill } from "./primitives";
+import { Section, BlueOval, OrangePill, fadeUp } from "./primitives";
 
 // Common brand questions and answers
 const faqs = [
@@ -20,34 +21,40 @@ const calendar = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="flex min-h-screen w-full flex-col overflow-hidden bg-paper px-6 py-12 md:px-16 md:py-16">
-      <div className="flex items-center gap-4">
+    // Switched to the shared Section primitive so this page picks up
+    // the same scroll-triggered stagger as every other section
+    <Section id="faq">
+      <motion.div variants={fadeUp} className="flex items-center gap-4">
         <OrangePill>For Brands</OrangePill>
         <span className="h-1.5 w-24 rounded-full bg-brand" />
-      </div>
+      </motion.div>
 
-      <h2 className="mt-4 font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand">
+      <motion.h2
+        variants={fadeUp}
+        className="mt-4 font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand"
+      >
         FAQ
-      </h2>
+      </motion.h2>
 
-      <p className="mt-3 font-display text-base font-bold uppercase tracking-wide text-ink">
+      <motion.p variants={fadeUp} className="mt-3 font-display text-base font-bold uppercase tracking-wide text-ink">
         <BlueOval>Everything before you brief me</BlueOval>
-      </p>
+      </motion.p>
 
-      {/* FAQ grid — 2 columns on desktop, stacks on mobile */}
       <div className="mt-8 grid flex-1 gap-4 md:grid-cols-2">
         {faqs.map((f) => (
-          <div key={f.q} className="rounded-3xl bg-ink/[0.04] p-5">
+          <motion.div key={f.q} variants={fadeUp} className="rounded-3xl bg-ink/[0.04] p-5">
             <p className="font-display text-base font-black uppercase tracking-wide text-ink">
               {f.q}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-ink/70">{f.a}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* Booking calendar CTA strip */}
-      <div className="mt-6 flex flex-col gap-5 rounded-[2rem] bg-brand p-6 text-brand-foreground md:flex-row md:items-center md:justify-between">
+      <motion.div
+        variants={fadeUp}
+        className="mt-6 flex flex-col gap-5 rounded-[2rem] bg-brand p-6 text-brand-foreground md:flex-row md:items-center md:justify-between"
+      >
         <div className="flex items-center gap-3">
           <CalendarDays className="h-8 w-8 shrink-0" />
           <div>
@@ -67,12 +74,12 @@ export function FAQ() {
           ))}
         </div>
         
-         < a href="#thanks"
+        < a href="#thanks"
           className="rounded-full bg-paper px-6 py-3 text-center text-xs font-black uppercase tracking-widest text-brand transition-transform hover:scale-105"
         >
           Book a slot
         </a>
-      </div>
-    </section>
+      </motion.div>
+    </Section>
   );
 }
