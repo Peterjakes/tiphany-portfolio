@@ -1,37 +1,33 @@
 import { motion } from "framer-motion";
+import { Section, PhotoPlaceholder, fadeUp } from "./primitives";
 import { IMG } from "../images";
 
-// Shared fade-up animation variant, consistent with Hero.jsx and About.jsx
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-};
-
-// Social channel data — each entry drives one card in the grid below
+// Active social channels only — Instagram and TikTok, with real follower counts
 const channels = [
-  { handle: "@wawer.u._", platform: "Instagram", count: "8K+", img: IMG.blazer },
-  { handle: "@wawer.u._", platform: "TikTok", count: "12K+", img: IMG.nails },
-  { handle: "@wawer.u._", platform: "YouTube", count: "2K+", img: IMG.event },
-  { handle: "@wawer.u._", platform: "Twitter / X", count: "1K+", img: IMG.beach },
+  {
+    handle: "@wawer.u._",
+    platform: "Instagram",
+    count: "10.6K",
+    img: IMG.blazer,
+  },
+  {
+    handle: "@wawer.u._",
+    platform: "TikTok",
+    count: "3K",
+    img: IMG.nails,
+  },
 ];
 
 export function Social() {
   return (
-    <motion.section
-      id="social"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-      className="relative flex min-h-screen flex-col px-6 py-10 md:px-12"
-    >
+    <Section id="social">
       {/* Decorative vertical line marker on the left, purely visual */}
       <div className="absolute left-6 top-1/4 flex flex-col items-center gap-2 md:left-12">
         <span className="h-6 w-6 rounded-full bg-ink" />
         <span className="h-64 w-1.5 rounded-full bg-brand" />
       </div>
 
-      {/* Section heading, fades up on scroll into view */}
+      {/* Section heading, offset right to clear the decorative line */}
       <motion.h2
         variants={fadeUp}
         className="ml-16 font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand md:ml-24"
@@ -51,18 +47,21 @@ export function Social() {
         </button>
       </motion.div>
 
-      {/* Channel cards — each card fades up individually, staggered via
-          the parent section's staggerChildren */}
-      <div className="mt-auto grid grid-cols-2 gap-8 pt-10 md:grid-cols-4">
+      {/* Channel cards — 2 columns, one per active platform. Grid was
+          previously grid-cols-4 for 4 channels; narrowed to grid-cols-2
+          since only Instagram and TikTok are active */}
+      <div className="mt-auto grid grid-cols-2 gap-8 pt-10">
         {channels.map((c) => (
           <motion.div
             key={c.platform}
             variants={fadeUp}
             className="flex flex-col items-center text-center"
           >
-            <div className="aspect-square w-full max-w-[180px] overflow-hidden rounded-full ring-4 ring-brand ring-offset-4 ring-offset-paper">
-              <img src={c.img} alt={c.platform} className="h-full w-full object-cover" />
-            </div>
+            <PhotoPlaceholder
+              rounded="rounded-full"
+              className="aspect-square w-full max-w-[180px] ring-4 ring-brand ring-offset-4 ring-offset-paper"
+              src={c.img}
+            />
             <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-ink/70">
               {c.platform}
             </p>
@@ -71,6 +70,6 @@ export function Social() {
           </motion.div>
         ))}
       </div>
-    </motion.section>
+    </Section>
   );
 }
