@@ -1,68 +1,110 @@
 import { motion } from "framer-motion";
+import { Section, PhotoPlaceholder, BlueOval, ThumbsUpSticker, fadeUp } from "./primitives";
 import { IMG } from "../images";
-
-// Shared fade-up animation variant for staggered text entrance,
-// mirrors the one used in Hero.js for a consistent feel site-wide
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-};
 
 export function About() {
   return (
-    <motion.section
-      id="about"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-      className="relative flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center md:px-12"
-    >
+    <Section id="about" className="items-center justify-center text-center">
+      {/* Decorative thumbs-up sticker, springs in above the heading */}
+      <ThumbsUpSticker className="left-[42%] top-10" rotate={-12} />
+
       {/* "4+ Years" badge — springs in with a slight overshoot for a playful pop */}
       <motion.div
-        initial={{ scale: 0, rotate: 20 }}
-        whileInView={{ scale: 1, rotate: 8 }}
-        viewport={{ once: true }}
-        transition={{ type: "spring", stiffness: 180, damping: 14, delay: 0.5 }}
+        initial={{
+          scale: 0,
+          rotate: 20,
+        }}
+        whileInView={{
+          scale: 1,
+          rotate: 8,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 180,
+          damping: 14,
+          delay: 0.5,
+        }}
         className="pointer-events-none absolute right-8 top-12 rounded-2xl bg-brand px-4 py-2 text-xs font-black uppercase tracking-wider text-brand-foreground shadow-lg"
       >
         4+ Years
       </motion.div>
 
-      {/* "Digital Content" badge */}
+      {/* "Digital Content" badge — same spring treatment, delayed slightly
+          after the first badge so they don't land simultaneously */}
       <motion.div
-        initial={{ scale: 0, rotate: -25 }}
-        whileInView={{ scale: 1, rotate: -10 }}
-        viewport={{ once: true }}
-        transition={{ type: "spring", stiffness: 180, damping: 14, delay: 0.6 }}
+        initial={{
+          scale: 0,
+          rotate: -25,
+        }}
+        whileInView={{
+          scale: 1,
+          rotate: -10,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 180,
+          damping: 14,
+          delay: 0.6,
+        }}
         className="pointer-events-none absolute bottom-12 left-8 rounded-full border-2 border-brand bg-paper px-4 py-2 text-xs font-black uppercase tracking-wider text-brand shadow"
       >
         Digital Content
       </motion.div>
 
-      {/* Floating photo — left */}
+      {/* Floating photo — slides in from the left, hidden on mobile to avoid clutter */}
       <motion.div
-        initial={{ opacity: 0, rotate: -20, x: -40 }}
-        whileInView={{ opacity: 1, rotate: -8, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        initial={{
+          opacity: 0,
+          rotate: -20,
+          x: -40,
+        }}
+        whileInView={{
+          opacity: 1,
+          rotate: -8,
+          x: 0,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
         className="absolute left-4 top-1/3 hidden md:block"
       >
-        <img src={IMG.sunlitSmile} alt="" className="h-44 w-36 rounded-2xl object-cover" />
+        <PhotoPlaceholder className="h-44 w-36" src={IMG.sunlitSmile} />
       </motion.div>
 
-      {/* Floating photo — right */}
+      {/* Floating photo — slides in from the right, mirroring the left one */}
       <motion.div
-        initial={{ opacity: 0, rotate: 20, x: 40 }}
-        whileInView={{ opacity: 1, rotate: 10, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        initial={{
+          opacity: 0,
+          rotate: 20,
+          x: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          rotate: 10,
+          x: 0,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
         className="absolute bottom-24 right-6 hidden md:block"
       >
-        <img src={IMG.cafeJacket} alt="" className="h-44 w-36 rounded-2xl object-cover" />
+        <PhotoPlaceholder className="h-44 w-36" src={IMG.cafeJacket} />
       </motion.div>
 
-      {/* Text content now fades up as a staggered group via the parent's variants */}
+      {/* Section heading + bio content, fades up as a staggered group via
+          the parent Section's variants */}
       <motion.h2
         variants={fadeUp}
         className="font-display text-[clamp(3.5rem,12vw,10rem)] font-black uppercase leading-none text-brand"
@@ -73,9 +115,7 @@ export function About() {
         variants={fadeUp}
         className="mt-6 font-display text-2xl font-black uppercase text-ink md:text-3xl"
       >
-        <span className="inline-block rounded-full bg-brand/10 px-4 py-1.5 text-brand">
-          WHO I AM?
-        </span>
+        <BlueOval>WHO I AM?</BlueOval>
       </motion.div>
       <motion.p
         variants={fadeUp}
@@ -93,6 +133,6 @@ export function About() {
       >
         wawer.u._
       </motion.a>
-    </motion.section>
+    </Section>
   );
 }
