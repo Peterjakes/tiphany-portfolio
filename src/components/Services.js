@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-
-// Shared fade-up animation variant, consistent across all sections
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-};
+import { Section, PhotoPlaceholder, fadeUp } from "./primitives";
 
 // Content packages — synced with the official rate card
 const services = [
@@ -16,7 +11,7 @@ const services = [
   { name: "UGC Package", price: "10,000", desc: "2 Authentic Product Review Videos (No Posting) - PR" },
 ];
 
-// Standalone client services, for clients who don't need a full package
+// Standalone à la carte services, for clients who don't need a full package
 const extras = [
   { name: "Instagram Stories (multiple frames)", price: "4,000" },
   { name: "Instagram Reel + Post", price: "15,000" },
@@ -26,16 +21,20 @@ const extras = [
   { name: "Extra Revision", price: "Negotiable" },
 ];
 
+// Scrolls to the ThankYou section's request form and pre-fills its message
+// textarea with the selected package — ties Services directly into the
+// existing contact form instead of opening a separate mailto draft
+function inquireAbout(name, price, desc) {
+  const msg = document.querySelector('#thanks textarea[name="message"]');
+  if (msg && !msg.value.trim()) {
+    msg.value = `Hi Tiphany, I'm interested in the ${name} package (KES ${price}) — ${desc}.`;
+  }
+  document.getElementById("thanks")?.scrollIntoView({ behavior: "smooth" });
+}
+
 export function Services() {
   return (
-    <motion.section
-      id="services"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-      className="flex min-h-screen flex-col items-center px-6 py-10 text-center md:px-12"
-    >
+    <Section id="services" className="items-center text-center">
       <motion.h2
         variants={fadeUp}
         className="font-display text-[clamp(2.5rem,9vw,7rem)] font-black uppercase leading-none text-brand"
@@ -58,6 +57,10 @@ export function Services() {
         Download Full Rate Card (PDF)
       </motion.a>
 
+      {/* Package cards — each fades up on scroll and lifts slightly on
+          hover; highlighted package gets inverted brand colors to stand
+          out as the recommended tier. "Inquire" scrolls to the ThankYou
+          form and pre-fills the message instead of opening a mailto draft */}
       <div className="mt-10 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => (
           <motion.div
@@ -68,7 +71,10 @@ export function Services() {
               s.highlight ? "bg-brand text-brand-foreground ring-brand" : "bg-paper text-ink ring-ink/10"
             }`}
           >
-            <div className="aspect-square w-full rounded-2xl bg-ink/10" />
+            {/* PhotoPlaceholder with no src falls back to the camera-icon
+                placeholder from primitives.js until real package photos
+                are added */}
+            <PhotoPlaceholder className="aspect-square w-full" rounded="rounded-2xl" />
 
             <p className={`mt-4 font-display text-3xl font-black ${s.highlight ? "text-brand-foreground" : "text-brand"}`}>
               KES {s.price}
@@ -76,24 +82,20 @@ export function Services() {
             <p className="mt-1 text-sm font-bold uppercase tracking-wide">{s.name}</p>
             <p className={`mt-2 text-xs ${s.highlight ? "opacity-90" : "text-ink/70"}`}>{s.desc}</p>
 
-            
-            <a
-              href={`mailto:tiphy.waweru2002@gmail.com?subject=${encodeURIComponent(
-                `Inquiry: ${s.name} Package`
-              )}&body=${encodeURIComponent(
-                `Hi Tiphany,\n\nI'd like to inquire about the ${s.name} package (KES ${s.price}).\n\n`
-              )}`}
-              className={`mt-4 block w-full rounded-full px-4 py-2 text-center text-xs font-bold uppercase tracking-widest transition-transform hover:scale-105 ${
+            <button
+              type="button"
+              onClick={() => inquireAbout(s.name, s.price, s.desc)}
+              className={`mt-4 w-full rounded-full px-4 py-2 text-xs font-bold uppercase tracking-widest transition-transform hover:scale-105 ${
                 s.highlight ? "bg-paper text-brand" : "bg-brand text-brand-foreground"
               }`}
             >
               Inquire
-            </a>
+            </button>
           </motion.div>
         ))}
       </div>
 
-      {/* Separate services table — for clients who want a
+      {/* Separate/à la carte services table — for clients who want a
           single deliverable instead of a bundled package */}
       <motion.div variants={fadeUp} className="mt-14 w-full max-w-2xl">
         <h3 className="font-display text-xl font-black uppercase tracking-wide text-brand">
@@ -114,6 +116,6 @@ export function Services() {
       <motion.p variants={fadeUp} className="mt-8 max-w-xl text-xs italic text-ink/60">
         Rates are adjustable depending on campaign scope, usage rights, and exclusivity.
       </motion.p>
-    </motion.section>
+    </Section>
   );
 }
