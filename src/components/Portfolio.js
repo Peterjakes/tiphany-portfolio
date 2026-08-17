@@ -1,12 +1,7 @@
 import { motion } from "framer-motion";
 import { Eye, Heart, MessageCircle } from "lucide-react";
+import { Section, PhotoPlaceholder, fadeUp } from "./primitives";
 import { IMG } from "../images";
-
-// Shared fade-up animation variant, consistent across all sections
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-};
 
 // Featured content pieces with engagement stats for each
 const cards = [
@@ -27,14 +22,7 @@ function Stat({ icon, value }) {
 
 export function Portfolio() {
   return (
-    <motion.section
-      id="portfolio"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-      variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-      className="flex min-h-screen flex-col px-6 py-10 md:px-12"
-    >
+    <Section id="portfolio">
       {/* Heading + "Performance Highlights" tag */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <motion.h2
@@ -53,26 +41,28 @@ export function Portfolio() {
         </motion.span>
       </div>
 
-      {/* Content cards row — each card fades up on scroll, with a staggered
-          delay per index so they don't all land at once, plus a subtle
-          lift-on-hover for interactivity */}
+      {/* Content cards row — decorative filler blocks on either end at
+          desktop width give the row a "carousel" feel without needing
+          actual scroll/carousel logic. Each card fades up on scroll with
+          a staggered delay per index, plus a subtle lift-on-hover */}
       <div className="relative mt-10 flex flex-1 items-center justify-center gap-5 overflow-hidden">
         <div className="hidden h-[60%] w-24 shrink-0 rounded-[2rem] bg-[oklch(0.86_0.005_60)] opacity-50 md:block" />
-
         {cards.map((c, i) => (
           <motion.div
             key={c.label}
             variants={fadeUp}
-            whileHover={{ y: -8 }}
-            transition={{ delay: i * 0.1 }}
+            whileHover={{
+              y: -8,
+            }}
+            transition={{
+              delay: i * 0.1,
+            }}
             className="flex w-full max-w-[260px] flex-1 flex-col gap-3 rounded-[2rem] bg-paper p-4 shadow-xl ring-1 ring-ink/10"
           >
             <span className="text-center text-[11px] font-black uppercase tracking-widest text-ink">
               {c.label}
             </span>
-            <div className="aspect-[9/14] w-full overflow-hidden rounded-2xl">
-              <img src={c.img} alt={c.label} className="h-full w-full object-cover" />
-            </div>
+            <PhotoPlaceholder className="aspect-[9/14] w-full" rounded="rounded-2xl" src={c.img} />
             <div className="flex justify-between gap-1">
               <Stat icon={<Eye className="h-3 w-3" />} value={c.views} />
               <Stat icon={<Heart className="h-3 w-3" />} value={c.likes} />
@@ -80,9 +70,8 @@ export function Portfolio() {
             </div>
           </motion.div>
         ))}
-
         <div className="hidden h-[60%] w-24 shrink-0 rounded-[2rem] bg-[oklch(0.86_0.005_60)] opacity-50 md:block" />
       </div>
-    </motion.section>
+    </Section>
   );
 }
