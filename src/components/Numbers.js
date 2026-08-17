@@ -2,14 +2,15 @@ import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { Section, BlueOval, OrangePill, ThumbsUpSticker, PhotoPlaceholder, fadeUp } from "./primitives";
 import { IMG } from "../images";
-import { downloadMediaKit } from "../media-kit";
 
-// Brands/organizations previously worked with — shown as a simple credibility list but ill add real brands shes worked with in the future,after she sends me a list of them. For now, these are just placeholders to show the layout and design of the section.
-const partners = ["Huddah Cosmetics", "Java House", "Vivo Activewear", "Nairobi Design Week", "Bata Kenya"];
+// Brands/organizations previously worked with — kept in sync with the
+// client roster in Clients.js
+const partners = ["Lumi Hair and Beauty", "Enkata Watches", "Samsung", "Windsor Hotel"];
 
 // Headline stat cards
+// (Instagram/TikTok insights) will replace with real data once available
 const stats = [
-  { value: "23K+", label: "Total Followers" },
+  { value: "13.6K", label: "Total Followers" },
   { value: "1.2M", label: "Monthly Views" },
   { value: "8.4%", label: "Avg. Engagement" },
   { value: "150+", label: "Content Pieces" },
@@ -37,21 +38,19 @@ export function Numbers() {
         MY NUMBERS
       </motion.h2>
 
-      {/* Sub-label + media kit download trigger */}
       <motion.div variants={fadeUp} className="mt-3 flex flex-wrap items-center gap-4">
         <p className="font-display text-lg font-bold uppercase tracking-wide text-ink">
           <BlueOval>The Reach</BlueOval>
         </p>
-        <button
-          type="button"
-          onClick={downloadMediaKit}
+        
+         <a href="/downloads/Tiphany-Media-Kit.pdf"
+          download
           className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[11px] font-black uppercase tracking-widest text-paper transition-transform hover:scale-105"
         >
           <Download className="h-3.5 w-3.5" /> Download Media Kit
-        </button>
+        </a>
       </motion.div>
 
-      {/* Headline stat cards */}
       <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
         {stats.map((s) => (
           <motion.div key={s.label} variants={fadeUp} className="rounded-3xl bg-brand px-5 py-7 text-brand-foreground">
@@ -61,7 +60,6 @@ export function Numbers() {
         ))}
       </div>
 
-      {/* Audience snapshot + niches, alongside a photo card */}
       <div className="mt-6 grid flex-1 gap-6 md:grid-cols-3">
         <motion.div variants={fadeUp} className="rounded-3xl bg-ink/[0.04] p-6 md:col-span-2">
           <p className="font-display text-sm font-black uppercase tracking-widest text-ink/60">
@@ -74,7 +72,6 @@ export function Numbers() {
                   <span className="text-sm font-bold uppercase tracking-wide text-ink">{a.label}</span>
                   <span className="font-display text-xl font-black text-brand">{a.pct}%</span>
                 </div>
-                {/* Bar fills to its percentage width on scroll into view */}
                 <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-ink/10">
                   <motion.span
                     initial={{ width: 0 }}
@@ -111,7 +108,6 @@ export function Numbers() {
         </motion.div>
       </div>
 
-      {/* Partner/client credibility strip */}
       <motion.div variants={fadeUp} className="mt-6 border-y border-ink/10 py-4">
         <p className="font-display text-[11px] font-black uppercase tracking-[0.3em] text-ink/50">
           As seen in / worked with
