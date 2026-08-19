@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 // Role labels shown as pill badges at the top of the hero
 const labels = ["CONTENT CREATOR", "STORYTELLER", "DIGITAL MARKETER"];

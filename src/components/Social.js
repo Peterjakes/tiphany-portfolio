@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 // Active social channels only — Instagram and TikTok, with real follower counts
 const channels = [

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 // Real client/brand partnerships, mapped to a 3-column layout:
 // col 1 = single tall card, col 2 = two stacked cards, col 3 = single tall card

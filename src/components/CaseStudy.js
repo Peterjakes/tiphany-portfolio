@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp } from "lucide-react";
-import { Section, PhotoPlaceholder, BlueOval, OrangePill, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, OrangePill, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 // Headline result metrics from the featured campaign
 const results = [

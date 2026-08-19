@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, BlueOval, ThumbsUpSticker, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, ThumbsUpSticker, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 export function About() {
   return (

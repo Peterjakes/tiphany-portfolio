@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
-import { Section, PhotoPlaceholder, BlueOval, ThumbsUpSticker, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, ThumbsUpSticker, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 // Campaign types offered in the media kit request form's dropdown
 const campaignTypes = ["Product Review", "Brand Campaign", "Event Coverage", "Long-term Partnership"];

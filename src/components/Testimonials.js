@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, ThumbsUp, MessageCircle } from "lucide-react";
-import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
+import { IMG } from "./images";
 
 // Client testimonials — each has its own accent icon reflecting how they
 // engaged (Heart, ThumbsUp, etc.)
