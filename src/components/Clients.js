@@ -1,84 +1,123 @@
+// src/components/Clients.jsx
 import { motion } from "framer-motion";
 import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
 import { IMG } from "./images";
 
-// Real client/brand partnerships, mapped to a 3-column layout:
-// col 1 = single tall card, col 2 = two stacked cards, col 3 = single tall card
-// NOTE: lumiHair, enkataWatches, samsungMasterclass, and windsorHotel keys
-
-const clients = [
-  { name: "Lumi Hair and Beauty", type: "Beauty Collab", img: IMG.lumiHair },
-  { name: "Enkata Watches", type: "Lifestyle Campaign", img: IMG.enkataWatches },
-  { name: "Samsung", type: "Galaxy Master Your Shot Masterclass", img: IMG.samsungMasterclass },
-  { name: "Windsor Hotel", type: "Hospitality Feature", img: IMG.windsorHotel },
+// Full client/brand roster, grouped by category so the list reads as
+// organized expertise areas. Only 4 brands have real logo assets right
+// now (img set); the rest render as plain text pills.
+const categories = [
+  {
+    label: "Beauty & Personal Care",
+    brands: [
+      { name: "Lumi Hair and Beauty", img: IMG.lumiHair },
+      { name: "Canvas Cosmetics" },
+      { name: "Wara Fragrance" },
+      { name: "Eshe Skin" },
+      { name: "Ythera Scents" },
+      { name: "Bella Zuri" },
+      { name: "Braiding Nairobi" },
+      { name: "Glamour Queen" },
+      { name: "Posh Palace Beauty Salon" },
+      { name: "Nouba" },
+      { name: "QueensCorner KE" },
+    ],
+  },
+  {
+    label: "Food & Beverage",
+    brands: [{ name: "Barista and Co" }, { name: "Pistachio by Masala Twist" }],
+  },
+  {
+    label: "Fashion & Accessories",
+    brands: [{ name: "Enkata", img: IMG.enkataWatches }],
+  },
+  {
+    label: "Home & Lifestyle",
+    brands: [{ name: "Fairdeal Furniture" }, { name: "Ace Household" }],
+  },
+  {
+    label: "Hospitality",
+    brands: [{ name: "Windsor Hotel", img: IMG.windsorHotel }],
+  },
+  {
+    label: "Tech",
+    brands: [{ name: "Samsung", img: IMG.samsungMasterclass }],
+  },
 ];
 
-// Small overlay label shown at the bottom of each client photo card
-function ClientLabel({ name, type }) {
+// One brand pill — shows a small logo circle inline when available,
+// otherwise just the name
+function BrandPill({ name, img }) {
   return (
-    <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-brand px-5 py-3 text-brand-foreground shadow-lg">
-      <p className="text-sm font-black uppercase tracking-wide">{name}</p>
-      <p className="text-[11px] font-medium uppercase tracking-widest opacity-90">{type}</p>
-    </div>
+    <motion.span
+      whileHover={{ y: -2 }}
+      className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper px-4 py-2 text-[11px] font-bold uppercase tracking-wide text-ink shadow-sm"
+    >
+      {img && <PhotoPlaceholder className="h-5 w-5 shrink-0" rounded="rounded-full" src={img} />}
+      {name}
+    </motion.span>
   );
 }
 
 export function Clients() {
   return (
     <Section id="clients">
-      {/* Decorative top bar + dot, purely visual divider */}
       <motion.div variants={fadeUp} className="h-3 w-full rounded-full bg-brand" />
       <div className="relative mt-6 flex justify-center">
         <div className="h-10 w-10 rounded-full bg-ink" />
       </div>
 
-      {/* Heading + sub-label */}
+      {/* Big headline is back to a single short word; the fuller phrase
+          moved to a smaller oval tag on the right, matching the layout
+          used across other sections (e.g. About's "WHO I AM?") */}
       <div className="mt-8 flex flex-wrap items-start justify-between gap-6">
         <motion.h2
           variants={fadeUp}
           className="font-display text-[clamp(3rem,10vw,8rem)] font-black uppercase leading-none text-brand"
         >
-          CLIENT
+          BRANDS
         </motion.h2>
         <motion.div variants={fadeUp} className="mt-4 font-display text-base font-bold uppercase">
           <BlueOval>BRANDS I'VE PARTNERED WITH</BlueOval>
         </motion.div>
       </div>
 
-      {/* 3-column layout — outer columns get one card each (fixed aspect
-          ratio, kept compact rather than stretching full height), middle
-          column stacks two smaller cards */}
-      <div className="mt-10 grid flex-1 grid-cols-1 gap-5 md:grid-cols-3">
-        <motion.div variants={fadeUp} className="relative aspect-[3/4] w-full">
-          <PhotoPlaceholder
-            className="h-full w-full"
-            rounded="rounded-[2rem]"
-            src={clients[0].img}
-          />
-          <ClientLabel name={clients[0].name} type={clients[0].type} />
-        </motion.div>
+      {/* Two-column layout: photo tiles on the left as a visual anchor,
+          categorized pill grid on the right listing the full roster */}
+      <div className="mt-8 grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[1fr_2fr]">
+        <div className="flex flex-col gap-5">
+          <motion.div variants={fadeUp} className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:h-full lg:min-h-[220px]">
+            <PhotoPlaceholder className="h-full w-full" rounded="rounded-none" src={IMG.nails} />
+            <span className="absolute bottom-4 left-4 rounded-full bg-brand px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-foreground shadow-lg">
+              Beauty & Personal Care
+            </span>
+          </motion.div>
+          <motion.div variants={fadeUp} className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:h-full lg:min-h-[220px]">
+            <PhotoPlaceholder className="h-full w-full" rounded="rounded-none" src={IMG.sunlitSmile} />
+            <span className="absolute bottom-4 left-4 rounded-full bg-brand px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-foreground shadow-lg">
+              Food & Lifestyle
+            </span>
+          </motion.div>
+        </div>
 
-        <div className="grid grid-rows-2 gap-5">
-          {[1, 2].map((i) => (
-            <motion.div key={i} variants={fadeUp} className="relative aspect-[4/3] w-full">
-              <PhotoPlaceholder
-                className="h-full w-full"
-                rounded="rounded-[2rem]"
-                src={clients[i].img}
-              />
-              <ClientLabel name={clients[i].name} type={clients[i].type} />
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {categories.map((cat) => (
+            <motion.div
+              key={cat.label}
+              variants={fadeUp}
+              className="rounded-[1.75rem] bg-ink/[0.03] p-5 ring-1 ring-ink/10"
+            >
+              <p className="text-[11px] font-black uppercase tracking-widest text-brand">
+                {cat.label}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {cat.brands.map((b) => (
+                  <BrandPill key={b.name} name={b.name} img={b.img} />
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div variants={fadeUp} className="relative aspect-[3/4] w-full">
-          <PhotoPlaceholder
-            className="h-full w-full"
-            rounded="rounded-[2rem]"
-            src={clients[3].img}
-          />
-          <ClientLabel name={clients[3].name} type={clients[3].type} />
-        </motion.div>
       </div>
     </Section>
   );
