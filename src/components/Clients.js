@@ -87,13 +87,13 @@ export function Clients() {
       <div className="mt-8 grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[1fr_2fr]">
         <div className="flex flex-col gap-5">
           <motion.div variants={fadeUp} className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:h-full lg:min-h-[220px]">
-            <PhotoPlaceholder className="h-full w-full" rounded="rounded-none" src={IMG.nails} />
+            <PhotoPlaceholder className="h-full w-full" rounded="rounded-none" src={IMG.sunlitSmile} />
             <span className="absolute bottom-4 left-4 rounded-full bg-brand px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-foreground shadow-lg">
               Beauty & Personal Care
             </span>
           </motion.div>
           <motion.div variants={fadeUp} className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:h-full lg:min-h-[220px]">
-            <PhotoPlaceholder className="h-full w-full" rounded="rounded-none" src={IMG.sunlitSmile} />
+            <PhotoPlaceholder className="h-full w-full" rounded="rounded-none" src={IMG.beach} />
             <span className="absolute bottom-4 left-4 rounded-full bg-brand px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-foreground shadow-lg">
               Food & Lifestyle
             </span>
