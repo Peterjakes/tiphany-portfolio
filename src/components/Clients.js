@@ -1,31 +1,32 @@
-// src/components/Clients.jsx
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
+import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
 import { IMG } from "./images";
 
-// Full client/brand roster, grouped by category so the list reads as
-// organized expertise areas. Only 4 brands have real logo assets right
-// now (img set); the rest render as plain text pills.
+// Full client/brand roster, grouped by category. Every brand now has a
+// real logo except Ace Household — still needs a logo asset supplied.
 const categories = [
   {
     label: "Beauty & Personal Care",
     brands: [
       { name: "Lumi Hair and Beauty", img: IMG.lumiHair },
-      { name: "Canvas Cosmetics" },
-      { name: "Wara Fragrance" },
-      { name: "Eshe Skin" },
-      { name: "Ythera Scents" },
-      { name: "Bella Zuri" },
-      { name: "Braiding Nairobi" },
-      { name: "Glamour Queen" },
-      { name: "Posh Palace Beauty Salon" },
-      { name: "Nouba" },
-      { name: "QueensCorner KE" },
+      { name: "Canvas Cosmetics", img: IMG.canvasCosmetics },
+      { name: "Wara Fragrance", img: IMG.waraFragrance },
+      { name: "Eshe Skin", img: IMG.esheSkin },
+      { name: "Ythera Scents", img: IMG.ytheraScents },
+      { name: "Bella Zuri", img: IMG.bellaZuri },
+      { name: "Braiding Nairobi", img: IMG.braidingNairobi },
+      { name: "Glamour Queen", img: IMG.glamourQueen },
+      { name: "Posh Palace Beauty Salon", img: IMG.poshPalace },
+      { name: "Nouba", img: IMG.nouba },
+      { name: "QueensCorner KE", img: IMG.queensCorner },
     ],
   },
   {
     label: "Food & Beverage",
-    brands: [{ name: "Barista and Co" }, { name: "Pistachio by Masala Twist" }],
+    brands: [
+      { name: "Barista and Co", img: IMG.baristaAndCo },
+      { name: "Pistachio by Masala Twist", img: IMG.pistachio },
+    ],
   },
   {
     label: "Fashion & Accessories",
@@ -33,7 +34,10 @@ const categories = [
   },
   {
     label: "Home & Lifestyle",
-    brands: [{ name: "Fairdeal Furniture" }, { name: "Ace Household" }],
+    brands: [
+      { name: "Fairdeal Furniture", img: IMG.fairdealFurniture },
+      { name: "Ace Household" },
+    ],
   },
   {
     label: "Hospitality",
@@ -67,9 +71,6 @@ export function Clients() {
         <div className="h-10 w-10 rounded-full bg-ink" />
       </div>
 
-      {/* Big headline is back to a single short word; the fuller phrase
-          moved to a smaller oval tag on the right, matching the layout
-          used across other sections (e.g. About's "WHO I AM?") */}
       <div className="mt-8 flex flex-wrap items-start justify-between gap-6">
         <motion.h2
           variants={fadeUp}
@@ -82,8 +83,6 @@ export function Clients() {
         </motion.div>
       </div>
 
-      {/* Two-column layout: photo tiles on the left as a visual anchor,
-          categorized pill grid on the right listing the full roster */}
       <div className="mt-8 grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[1fr_2fr]">
         <div className="flex flex-col gap-5">
           <motion.div variants={fadeUp} className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:h-full lg:min-h-[220px]">
