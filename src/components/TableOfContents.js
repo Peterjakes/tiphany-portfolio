@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeUp, stagger } from "./primitivies";
+import { fadeUp, stagger } from "./primitives";
 
 // Page sections listed in order, each numbered for the TOC layout
 const items = [

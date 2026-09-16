@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, fadeUp } from "./primitivies";
+import { Section, PhotoPlaceholder, fadeUp } from "./primitives";
 
 // Content packages — synced with the official rate card
 const services = [

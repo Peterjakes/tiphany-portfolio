@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Eye, Heart, MessageCircle } from "lucide-react";
-import { Section, PhotoPlaceholder, fadeUp } from "./primitivies";
+import { Section, PhotoPlaceholder, fadeUp } from "./primitives";
 import { IMG } from "./images";
 
 // Featured content pieces with engagement stats for each

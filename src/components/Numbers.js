@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { Section, BlueOval, OrangePill, ThumbsUpSticker, PhotoPlaceholder, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { IMG } from "./images";
 
 // Brands/organizations previously worked with — kept in sync with the
 // client roster in Clients.jsx

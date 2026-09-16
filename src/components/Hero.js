@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitivies";
+import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
 import { IMG } from "./images";
 
 // Role labels shown as pill badges at the top of the hero

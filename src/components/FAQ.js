@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
-import { Section, BlueOval, OrangePill, fadeUp } from "./primitivies";
+import { Section, BlueOval, OrangePill, fadeUp } from "./primitives";
 
 // Common brand questions and answers
 const faqs = [
