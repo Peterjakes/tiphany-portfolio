@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
-import { IMG } from "./images";
+import { IMG } from "../images";
 
-// Full client/brand roster, grouped by category. Every brand now has a
-// real logo except Ace Household — still needs a logo asset supplied.
+// Full client/brand roster, grouped by category — every brand now has a
+// real logo.
 const categories = [
   {
     label: "Beauty & Personal Care",
@@ -36,7 +36,7 @@ const categories = [
     label: "Home & Lifestyle",
     brands: [
       { name: "Fairdeal Furniture", img: IMG.fairdealFurniture },
-      { name: "Ace Household" },
+      { name: "Ace Household", img: IMG.aceHousehold },
     ],
   },
   {
