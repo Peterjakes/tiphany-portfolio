@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Section, PhotoPlaceholder, BlueOval, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { IMG } from "./images";
 
 // Full client/brand roster, grouped by category — every brand now has a
 // real logo.
