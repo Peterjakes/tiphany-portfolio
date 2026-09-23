@@ -121,7 +121,7 @@ export function About() {
         variants={fadeUp}
         className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-ink md:text-lg"
       >
-        I'm Tiphany W., a Beauty, Lifestyle, Fashion & Food content creator based in Nairobi, Kenya.
+        I'm Tiphany Waweru, a Beauty, Lifestyle, Makeup & Fashion content creator based in Nairobi, Kenya.
         I create authentic, aesthetic content that connects brands with real audiences.
       </motion.p>
       <motion.a

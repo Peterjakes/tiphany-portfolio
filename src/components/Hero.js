@@ -83,7 +83,7 @@ export function Hero() {
           informs, and inspires.
         </p>
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink/70">
-          Presentation by Tiphany W.
+          Presentation by Tiphany Waweru.
         </p>
       </motion.div>
     </Section>
