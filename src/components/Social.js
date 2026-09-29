@@ -7,7 +7,7 @@ const channels = [
   {
     handle: "@wawer.u._",
     platform: "Instagram",
-    count: "10.6K",
+    count: "10.7K",
     img: IMG.blazer,
   },
   {
