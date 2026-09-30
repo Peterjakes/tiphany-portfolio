@@ -3,7 +3,7 @@ import { ArrowRight, TrendingUp } from "lucide-react";
 import { Section, PhotoPlaceholder, BlueOval, OrangePill, fadeUp } from "./primitives";
 import { IMG } from "./images";
 
-// Headline result metrics from the featured campaign
+// Headline result metrics from the featured campaign (replace with Lumi's real numbers)
 const results = [
   { value: "312K", label: "Total Reach" },
   { value: "11.2%", label: "Engagement Rate" },
@@ -16,12 +16,12 @@ const steps = [
   {
     tag: "Before",
     title: "The Brief",
-    copy: "A local beauty brand launching a new lip range with low awareness outside their existing customers.",
+    copy: "Lumi Hair and Beauty wanted to grow awareness of its hair and beauty range beyond its existing customer base.",
   },
   {
     tag: "Concept",
     title: "The Content",
-    copy: "A 3-part story arc: an honest first-impression reel, a get-ready-with-me routine, and a TikTok wear test in Nairobi daylight.",
+    copy: "A 3-part story arc: an honest first-impression reel, a styling routine walkthrough, and a TikTok transformation shot in Nairobi daylight.",
   },
   {
     tag: "After",
@@ -32,8 +32,7 @@ const steps = [
 
 export function CaseStudy() {
   return (
-    // Switched to the shared Section primitive so this page picks up
-    // the same scroll-triggered stagger as every other section
+    // Shared Section primitive gives this page the same scroll-triggered stagger as the rest
     <Section id="case-study">
       <motion.div variants={fadeUp} className="flex items-center gap-4">
         <OrangePill>Case Study</OrangePill>
@@ -48,7 +47,7 @@ export function CaseStudy() {
       </motion.h2>
 
       <motion.p variants={fadeUp} className="mt-3 font-display text-base font-bold uppercase tracking-wide text-ink">
-        <BlueOval>Huddah Cosmetics Launch</BlueOval>
+        <BlueOval>Lumi Hair and Beauty Campaign</BlueOval>
       </motion.p>
 
       <div className="mt-8 grid flex-1 gap-6 lg:grid-cols-[1fr_320px]">
