@@ -7,7 +7,7 @@ import { IMG } from "./images";
 const cards = [
   { label: "DAY IN MY LIFE", views: "42K", likes: "5.1K", comments: "320", img: IMG.beach },
   { label: "PRODUCT REVIEW", views: "28K", likes: "3.8K", comments: "210", img: IMG.beauty1 },
-  { label: "MINI VLOG", views: "61K", likes: "7.4K", comments: "540", img: IMG.event },
+  { label: "PRODUCT LAUNCH", views: "61K", likes: "7.4K", comments: "540", img: IMG.event },
 ];
 
 // Small pill showing one engagement stat (views/likes/comments) with an icon
