@@ -15,8 +15,8 @@ const reviews = [
     icon: Heart,
   },
   {
-    name: "James Otieno",
-    title: "Marketing Lead, Java House",
+    name: "MR. Karanja",
+    title: "Marketing Lead, LUMI HAIR AND BEAUTY",
     quote:
       "Her storytelling makes our menu feel like an experience. Audiences responded immediately.",
     img: IMG.cafeYellow,
