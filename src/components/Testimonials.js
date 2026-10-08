@@ -7,8 +7,8 @@ import { IMG } from "./images";
 // engaged (Heart, ThumbsUp, etc.)
 const reviews = [
   {
-    name: "Sarah Mwangi",
-    title: "Founder, Glow Beauty KE",
+    name: "Sarah Wanjiku",
+    title: "Founder, ENKATA WATCHES",
     quote:
       "Tiphany's content drove a 3x spike in our launch week sales. Genuinely the best collab we've done.",
     img: IMG.beauty1,
