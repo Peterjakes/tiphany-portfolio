@@ -1,27 +1,69 @@
-// src/components/Numbers.jsx
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { Section, BlueOval, OrangePill, ThumbsUpSticker, PhotoPlaceholder, fadeUp } from "./primitives";
-import { IMG } from "./images";
+import { IMG } from "../images";
 
 const partners = ["Lumi Hair and Beauty", "Enkata", "Samsung", "Windsor Hotel"];
 
-// Headline stats — Instagram-only real data (30-day window). TikTok
-// numbers aren't included here since we only have her follower count
-// (3K) for that platform, not views/engagement.
-const stats = [
-  { value: "10.7K", label: "Instagram Followers" },
-  { value: "93.7K", label: "Views (30 Days)" },
-  { value: "50.8%", label: "Reach: Non-Followers" },
-  { value: "+70", label: "Net Followers (30 Days)" },
-];
+// Real Instagram insights (30-day window)
+const instagram = {
+  platform: "Instagram",
+  period: "Last 30 days",
+  stats: [
+    { value: "10.7K", label: "Followers" },
+    { value: "93.7K", label: "Views" },
+    { value: "50.8%", label: "Reach from Non-Followers" },
+    { value: "+70", label: "Net Followers" },
+  ],
+};
 
-// Audience demographic breakdown — real Instagram insights
+// Real TikTok analytics (28-day window, Sep 10 – Oct 7). Only the
+// strongest metrics are shown here; declining ones (post views, likes)
+// are intentionally left out of the public page.
+const tiktok = {
+  platform: "TikTok",
+  period: "Last 28 days",
+  stats: [
+    { value: "3K", label: "Followers" },
+    { value: "580", label: "New Viewers" },
+    { value: "48.3%", label: "Discovered via For You" },
+    { value: "58%", label: "Female Viewers" },
+  ],
+};
+
+// Instagram audience breakdown — real insights
 const audience = [
   { label: "Men", pct: 73.5 },
   { label: "Age 25–34", pct: 51.2 },
   { label: "Based in Kenya", pct: 74.1 },
 ];
+
+// One platform's label row + stat cards, so both platforms render
+// with identical styling
+function StatRow({ platform, period, stats }) {
+  return (
+    <motion.div variants={fadeUp}>
+      <div className="flex items-center gap-3">
+        <OrangePill>{platform}</OrangePill>
+        <span className="text-[11px] font-semibold uppercase tracking-widest text-ink/50">
+          {period}
+        </span>
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+        {stats.map((s) => (
+          <div key={s.label} className="rounded-3xl bg-brand px-4 py-5 text-brand-foreground">
+            <p className="font-display text-[clamp(1.8rem,4.5vw,3rem)] font-black leading-none">
+              {s.value}
+            </p>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest opacity-90">
+              {s.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 export function Numbers() {
   return (
@@ -42,8 +84,8 @@ export function Numbers() {
         <p className="font-display text-lg font-bold uppercase tracking-wide text-ink">
           <BlueOval>The Reach</BlueOval>
         </p>
-        
-          <a href="/downloads/Tiphany-Media-Kit.pdf"
+        <a
+          href="/downloads/Tiphany-Media-Kit.pdf"
           download
           className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[11px] font-black uppercase tracking-widest text-paper transition-transform hover:scale-105"
         >
@@ -51,19 +93,16 @@ export function Numbers() {
         </a>
       </motion.div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-        {stats.map((s) => (
-          <motion.div key={s.label} variants={fadeUp} className="rounded-3xl bg-brand px-5 py-7 text-brand-foreground">
-            <p className="font-display text-[clamp(2rem,5vw,3.5rem)] font-black leading-none">{s.value}</p>
-            <p className="mt-2 text-[11px] font-semibold uppercase tracking-widest opacity-90">{s.label}</p>
-          </motion.div>
-        ))}
+      {/* Per-platform stat rows */}
+      <div className="mt-8 flex flex-col gap-6">
+        <StatRow {...instagram} />
+        <StatRow {...tiktok} />
       </div>
 
       <div className="mt-6 grid flex-1 gap-6 md:grid-cols-3">
         <motion.div variants={fadeUp} className="rounded-3xl bg-ink/[0.04] p-6 md:col-span-2">
           <p className="font-display text-sm font-black uppercase tracking-widest text-ink/60">
-            Audience Snapshot
+            Instagram Audience Snapshot
           </p>
           <div className="mt-5 space-y-5">
             {audience.map((a) => (
