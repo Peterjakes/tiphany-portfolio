@@ -10,7 +10,7 @@ const items = [
   ["05", "Content Portfolio"],
   ["06", "Case Study"],
   ["07", "Services & Pricelist"],
-  ["08", "Testimonials"],
+  ["08", "Audience Voice"],
   ["09", "FAQ for Brands"],
   ["10", "Contact & Media Kit"],
 ];
