@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { Section, BlueOval, OrangePill, ThumbsUpSticker, PhotoPlaceholder, fadeUp } from "./primitives";
-import { IMG } from "../images";
+import { IMG } from "./images";
 
 const partners = ["Lumi Hair and Beauty", "Enkata", "Samsung", "Windsor Hotel"];
 
