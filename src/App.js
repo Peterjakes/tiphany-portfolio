@@ -7,7 +7,7 @@ import { Clients } from "./components/Clients";
 import { Portfolio } from "./components/Portfolio";
 import { CaseStudy } from "./components/CaseStudy";
 import { Services } from "./components/Services";
-import { Testimonials } from "./components/Testimonials";
+import { AudienceVoice } from "./components/AudienceVoice";
 import { FAQ } from "./components/FAQ";
 import { ThankYou } from "./components/ThankYou";
 
@@ -27,7 +27,7 @@ function App() {
       <Portfolio />
       <CaseStudy />
       <Services />
-      <Testimonials />
+      <AudienceVoice />
       <FAQ />
       <ThankYou />
     </main>
