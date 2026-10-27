@@ -3,40 +3,36 @@ import { Heart, MessageCircle, MapPin, Users, Sparkles } from "lucide-react";
 import { Section, BlueOval, ThumbsUpSticker, fadeUp } from "./primitives";
 
 /**
- * PLACEHOLDER COMMENTS — will replace every entry below with a REAL comment
- * before deploying. Instagram > Professional dashboard > Insights > open
- * a recent product/review post > copy the handle, comment and like count.
- * Keep the "buying intent" ones ("where can I buy this?", "which one for
- * dry skin?"), as those are the ones brands care about.
+ * Real comments from Tiphany's Instagram posts.
  */
 const comments = [
   {
-    handle: "@wanjiku.m",
-    initial: "W",
+    handle: "@maggie_showz",
+    initial: "M",
     tone: "bg-brand text-brand-foreground",
-    text: "Okay but where can I get this?? I have been looking for that exact shade for weeks",
-    likes: "148",
+    text: "I'm getting this product 😍😍😍thank you for plugging us",
+    likes: "2",
   },
   {
-    handle: "@dennis_kamau",
-    initial: "D",
+    handle: "@michelle.kirigi",
+    initial: "M",
     tone: "bg-ink text-paper",
-    text: "Tried the routine you posted and my skin actually cleared. No cap",
-    likes: "203",
+    text: "Adds to cart😍",
+    likes: "1",
   },
   {
-    handle: "@aisha.njeri",
-    initial: "A",
+    handle: "@ellathelawfluencer",
+    initial: "E",
     tone: "bg-scribble text-brand-foreground",
-    text: "Saving this for the weekend, that recipe looks crazy good",
-    likes: "96",
+    text: "Getting my shade right away😍",
+    likes: "",
   },
   {
-    handle: "@brian.otieno",
-    initial: "B",
+    handle: "@jenny_mercedes",
+    initial: "J",
     tone: "bg-brand text-brand-foreground",
-    text: "Which one is better for dry skin? Asking for me honestly",
-    likes: "61",
+    text: "Will definitely try the surface cleaner🫰🏽",
+    likes: "",
   },
 ];
 
@@ -98,10 +94,14 @@ export function AudienceVoice() {
               <p className="mt-2 text-[13px] leading-snug text-ink/90">“{c.text}”</p>
             </div>
             <div className="mt-2.5 flex items-center gap-3 border-t border-ink/10 pt-2 text-[11px] font-semibold uppercase tracking-wide text-ink/50">
-              <span className="flex items-center gap-1.5">
-                <Heart className="h-3.5 w-3.5 text-brand" /> {c.likes}
-              </span>
-              <span className="flex items-center gap-1.5">
+              {/* Like count only renders when the comment actually has one */}
+              {c.likes && (
+                <span className="flex items-center gap-1.5">
+                  <Heart className="h-3.5 w-3.5 text-brand" /> {c.likes}
+                </span>
+              )}
+              {/* Decorative "Reply" label, mirrors the Instagram comment UI */}
+              <span className="flex cursor-default items-center gap-1.5">
                 <MessageCircle className="h-3.5 w-3.5" /> Reply
               </span>
             </div>
