@@ -5,7 +5,7 @@ import { IMG } from "./images";
 
 // Headline result metrics from the featured campaign (replace with Lumi's real numbers)
 const results = [
-  { value: "312K", label: "Total Reach" },
+  { value: "93.7k", label: "Total Reach" },
   { value: "11.2%", label: "Engagement Rate" },
   { value: "1.8K", label: "Code Redemptions" },
   { value: "3x", label: "Content Reused by Brand" },
