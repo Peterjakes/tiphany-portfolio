@@ -25,7 +25,7 @@ const tiktok = {
   period: "Last 28 days",
   stats: [
     { value: "3K", label: "Followers" },
-    { value: "580", label: "New Viewers" },
+    { value: "680", label: "New Viewers" },
     { value: "48.3%", label: "Discovered via For You" },
     { value: "58%", label: "Female Viewers" },
   ],
