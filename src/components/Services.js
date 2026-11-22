@@ -4,7 +4,7 @@ import { Section, fadeUp } from "./primitives";
 // Content packages — synced with Tiphany's updated rate card
 const services = [
   { name: "Starter Glow", price: "42,000", desc: "1 Instagram Reel + Stories", bestFor: "Small businesses, product launches" },
-  { name: "Beauty Boost", price: "55,000", desc: "1 Reel + 1 Static Post + Stories", bestFor: "Beauty and skincare campaigns" },
+  { name: "Beauty Boost", price: "50,000", desc: "1 Reel + 1 Static Post + Stories", bestFor: "Beauty and skincare campaigns" },
   { name: "TikTok Buzz", price: "25,000", desc: "1 TikTok Video + cross-posted Story", bestFor: "Brand awareness and trends" },
   { name: "Social Media Combo", price: "58,000", desc: "1 Reel + 1 TikTok Video + Stories", bestFor: "Visibility across platforms" },
   {
