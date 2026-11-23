@@ -26,6 +26,7 @@ import poshPalace from "../images/Posh Palace.jpg";
 import queensCorner from "../images/QueensCorner KE.jpg";
 import waraFragrance from "../images/Wara fragrance.png";
 import aceHousehold from "../images/Ace_household.jpg";
+import doctorZeng from "../images/Dr_zeng.jpg";
 
 export const IMG = {
   beauty1,
@@ -56,4 +57,5 @@ export const IMG = {
   queensCorner,
   waraFragrance,
   aceHousehold,
+  doctorZeng,
 };
