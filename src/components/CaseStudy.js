@@ -16,17 +16,17 @@ const steps = [
   {
     tag: "Before",
     title: "The Brief",
-    copy: "Lumi Hair and Beauty wanted to grow awareness of its hair and beauty range beyond its existing customer base.",
+    copy: "Tiphany partnered with Lumi Hair and Beauty as a model, to showcase the salon's hair and makeup work to her audience.",
   },
   {
     tag: "Concept",
     title: "The Content",
-    copy: "A 3-part story arc: an honest first-impression reel, a styling routine walkthrough, and a TikTok transformation shot in Nairobi daylight.",
+    copy: "She documented a full transformation, from her old look to the new plaited hair and makeup, and posted it as a Reel on her Instagram. The content was also shared on Lumi's page.",
   },
   {
     tag: "After",
     title: "The Result",
-    copy: "The launch reel outperformed the brand's own page 6x, and the discount code sold through the first stock drop in 9 days.",
+    copy: "Viewers started asking where the salon was and what type of hair she had plaited, and many praised how good she looked in the new style. The Reel turned views into real interest in the salon.",
   },
 ];
 
@@ -86,7 +86,7 @@ export function CaseStudy() {
         <motion.div variants={fadeUp} className="relative">
           <PhotoPlaceholder className="h-full min-h-[260px] w-full" rounded="rounded-[2rem]" src={IMG.beauty1} />
           <span className="absolute -left-3 top-6 inline-flex items-center gap-1 rounded-full bg-ink px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-paper shadow-lg">
-            <TrendingUp className="h-3 w-3" /> 6x brand avg.
+            <TrendingUp className="h-3 w-3" /> 3x brand avg.
           </span>
         </motion.div>
       </div>
