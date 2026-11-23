@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp } from "lucide-react";
-import { Section, PhotoPlaceholder, BlueOval, OrangePill, fadeUp } from "./primitives";
+import { ArrowRight, Hash } from "lucide-react";
+import { Section, BlueOval, OrangePill, fadeUp } from "./primitives";
 import { IMG } from "./images";
 
-// Headline result metrics from the featured campaign (replace with Lumi's real numbers)
+// Campaign facts we can stand behind. Contract details (fee, payment
+// terms) are deliberately not shown. Add real Reel views/reach here once
+// Tiphany pulls them from her Instagram insights.
 const results = [
-  { value: "93.7k", label: "Total Reach" },
-  { value: "11.2%", label: "Engagement Rate" },
-  { value: "1.8K", label: "Code Redemptions" },
-  { value: "3x", label: "Content Reused by Brand" },
+  { value: "Reel + Stories", label: "Content Delivered" },
+  { value: "16 Days", label: "Posting Window" },
+  { value: "Top 3", label: "Post for New Followers" },
 ];
 
 // Before → Concept → After narrative steps
@@ -16,17 +17,17 @@ const steps = [
   {
     tag: "Before",
     title: "The Brief",
-    copy: "Lumi Hair and Beauty teamed up with Tiphany to be the face of its hair and makeup services, so more people could see the salon's craft.",
+    copy: "Creative Blueprint, the agency behind the Kaa Fresh na Doctor Zeng campaign, brought Tiphany on to introduce Doctor Zeng's armpit deodorant cream to her audience.",
   },
   {
     tag: "Concept",
     title: "The Content",
-    copy: "A makeover Reel took viewers from her everyday look to a fresh braided style with polished makeup. It went up on her Instagram and was shared on Lumi's page too.",
+    copy: "She shot a campaign Reel and supporting Stories herself, using the campaign hashtag and tagging Doctor Zeng. Each post was clearly marked as a paid partnership and approved by the brand before it went live.",
   },
   {
     tag: "After",
     title: "The Result",
-    copy: "Viewers started asking how to find the salon and which style she had gone for, and plenty complimented her fresh look. It was a clear sign the content sparked real interest in visiting.",
+    copy: "The Reel ranked among her best-performing posts for bringing in new followers that month, a sign the campaign connected with her audience.",
   },
 ];
 
@@ -47,7 +48,7 @@ export function CaseStudy() {
       </motion.h2>
 
       <motion.p variants={fadeUp} className="mt-3 font-display text-base font-bold uppercase tracking-wide text-ink">
-        <BlueOval>Lumi Hair and Beauty Campaign</BlueOval>
+        <BlueOval>Kaa Fresh na Doctor Zeng Campaign</BlueOval>
       </motion.p>
 
       <div className="mt-8 grid flex-1 gap-6 lg:grid-cols-[1fr_320px]">
@@ -69,10 +70,10 @@ export function CaseStudy() {
             </motion.div>
           ))}
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {results.map((r) => (
               <motion.div key={r.label} variants={fadeUp} className="rounded-3xl bg-brand px-4 py-5 text-brand-foreground">
-                <p className="font-display text-[clamp(1.6rem,4vw,2.5rem)] font-black leading-none">
+                <p className="font-display text-[clamp(1.3rem,3vw,1.9rem)] font-black uppercase leading-none">
                   {r.value}
                 </p>
                 <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest opacity-90">
@@ -84,9 +85,17 @@ export function CaseStudy() {
         </div>
 
         <motion.div variants={fadeUp} className="relative">
-          <PhotoPlaceholder className="h-full min-h-[260px] w-full" rounded="rounded-[2rem]" src={IMG.beauty1} />
+          {/* Product shot shown in full (object-contain) on a white card so
+              the packaging is never cropped */}
+          <div className="flex h-full min-h-[260px] w-full items-center justify-center overflow-hidden rounded-[2rem] bg-white ring-1 ring-ink/10">
+            <img
+              src={IMG.doctorZeng}
+              alt="Doctor Zeng armpit deodorant cream packaging"
+              className="h-full w-full object-contain"
+            />
+          </div>
           <span className="absolute -left-3 top-6 inline-flex items-center gap-1 rounded-full bg-ink px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-paper shadow-lg">
-            <TrendingUp className="h-3 w-3" /> 3x brand avg.
+            <Hash className="h-3 w-3" /> KaaFreshNaDoctorZeng
           </span>
         </motion.div>
       </div>
