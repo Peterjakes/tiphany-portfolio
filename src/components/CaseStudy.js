@@ -16,17 +16,17 @@ const steps = [
   {
     tag: "Before",
     title: "The Brief",
-    copy: "Tiphany partnered with Lumi Hair and Beauty as a model, to showcase the salon's hair and makeup work to her audience.",
+    copy: "Lumi Hair and Beauty teamed up with Tiphany to be the face of its hair and makeup services, so more people could see the salon's craft.",
   },
   {
     tag: "Concept",
     title: "The Content",
-    copy: "She documented a full transformation, from her old look to the new plaited hair and makeup, and posted it as a Reel on her Instagram. The content was also shared on Lumi's page.",
+    copy: "A makeover Reel took viewers from her everyday look to a fresh braided style with polished makeup. It went up on her Instagram and was shared on Lumi's page too.",
   },
   {
     tag: "After",
     title: "The Result",
-    copy: "Viewers started asking where the salon was and what type of hair she had plaited, and many praised how good she looked in the new style. The Reel turned views into real interest in the salon.",
+    copy: "Viewers started asking how to find the salon and which style she had gone for, and plenty complimented her fresh look. It was a clear sign the content sparked real interest in visiting.",
   },
 ];
 
