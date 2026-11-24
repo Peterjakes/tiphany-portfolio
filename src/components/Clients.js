@@ -19,6 +19,7 @@ const categories = [
       { name: "Posh Palace Beauty Salon", img: IMG.poshPalace },
       { name: "Nouba", img: IMG.nouba },
       { name: "QueensCorner KE", img: IMG.queensCorner },
+      { name: "Doctor Zeng", img: IMG.doctorZeng },
     ],
   },
   {
