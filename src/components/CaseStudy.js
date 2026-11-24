@@ -12,22 +12,23 @@ const results = [
   { value: "Top 3", label: "Post for New Followers" },
 ];
 
-// Before → Concept → After narrative steps (present tense)
+// Before → Concept → After narrative steps (past tense, since the
+// campaign has finished)
 const steps = [
   {
     tag: "Before",
     title: "The Brief",
-    copy: "Creative Blueprint, the agency behind the Kaa Fresh na Doctor Zeng campaign, brings Tiphany on board to introduce Doctor Zeng's armpit deodorant cream to her audience.",
+    copy: "Creative Blueprint, the agency behind the Kaa Fresh na Doctor Zeng campaign, brought Tiphany on board to introduce Doctor Zeng's armpit deodorant cream to her audience.",
   },
   {
     tag: "Concept",
     title: "The Content",
-    copy: "She shoots a campaign Reel and supporting Stories herself, using the campaign hashtag and tagging Doctor Zeng. Every post is clearly marked as a paid partnership and approved by the brand before it goes live.",
+    copy: "She shot a campaign Reel and supporting Stories herself, using the campaign hashtag and tagging Doctor Zeng. Every post was clearly marked as a paid partnership and approved by the brand before it went live.",
   },
   {
     tag: "After",
     title: "The Result",
-    copy: "In the campaign month, the Reel ranks among her best posts for bringing in new followers, a sign the campaign connects with her audience.",
+    copy: "In the campaign month, the Reel ranked among her best posts for bringing in new followers, a sign the campaign connected with her audience.",
   },
 ];
 
