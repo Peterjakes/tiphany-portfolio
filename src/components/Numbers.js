@@ -1,42 +1,45 @@
+// src/components/Numbers.jsx
 import { motion } from "framer-motion";
-import { Download } from "lucide-react";
 import { Section, BlueOval, OrangePill, ThumbsUpSticker, PhotoPlaceholder, fadeUp } from "./primitives";
 import { IMG } from "./images";
 
-const partners = ["Lumi Hair and Beauty", "Enkata", "Samsung", "Windsor Hotel"];
-
-// Real Instagram insights (30-day window)
+// Real Instagram insights. Dates are shown instead of "last 30 days" so
+// the label stays true after the numbers age; update when refreshed.
 const instagram = {
   platform: "Instagram",
-  period: "Last 30 days",
+  period: "18 Aug – 16 Sep 2026",
   stats: [
     { value: "10.7K", label: "Followers" },
-    { value: "93.7K", label: "Views" },
-    { value: "50.8%", label: "Reach from Non-Followers" },
+    { value: "93.8K", label: "Views" },
+    { value: "50.8%", label: "Views from Non-Followers" },
     { value: "+70", label: "Net Followers" },
   ],
 };
 
-// Real TikTok analytics (28-day window, Sep 10 – Oct 7). Only the
-// strongest metrics are shown here; declining ones (post views, likes)
-// are intentionally left out of the public page.
+// Real TikTok analytics. Only the strongest metrics are shown here;
+// declining ones (post views, likes) are intentionally left out of the
+// public page.
 const tiktok = {
   platform: "TikTok",
-  period: "Last 28 days",
+  period: "10 Sep – 7 Oct 2026",
   stats: [
     { value: "3K", label: "Followers" },
-    { value: "680", label: "New Viewers" },
+    { value: "580", label: "New Viewers" },
     { value: "48.3%", label: "Discovered via For You" },
     { value: "58%", label: "Female Viewers" },
   ],
 };
 
-// Instagram audience breakdown — real insights
+// Instagram audience breakdown — real insights. 18–34 is the sum of
+// the 18–24 (30.5%) and 25–34 (51.2%) groups.
 const audience = [
-  { label: "Men", pct: 73.5 },
-  { label: "Age 25–34", pct: 51.2 },
   { label: "Based in Kenya", pct: 74.1 },
+  { label: "Age 18–34", pct: 81.7 },
+  { label: "Age 25–34", pct: 51.2 },
 ];
+
+// Instagram follower gender split — both sides shown together
+const gender = { men: 73.5, women: 26.5 };
 
 // One platform's label row + stat cards, so both platforms render
 // with identical styling
@@ -69,7 +72,7 @@ export function Numbers() {
   return (
     <Section id="numbers">
       <motion.div variants={fadeUp} className="flex items-center gap-4">
-        <OrangePill>Media Kit</OrangePill>
+        <OrangePill>Insights</OrangePill>
         <span className="h-1.5 w-24 rounded-full bg-brand" />
       </motion.div>
 
@@ -80,17 +83,8 @@ export function Numbers() {
         MY NUMBERS
       </motion.h2>
 
-      <motion.div variants={fadeUp} className="mt-3 flex flex-wrap items-center gap-4">
-        <p className="font-display text-lg font-bold uppercase tracking-wide text-ink">
-          <BlueOval>The Reach</BlueOval>
-        </p>
-        <a
-          href="/downloads/Tiphany-Media-Kit.pdf"
-          download
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[11px] font-black uppercase tracking-widest text-paper transition-transform hover:scale-105"
-        >
-          <Download className="h-3.5 w-3.5" /> Download Media Kit
-        </a>
+      <motion.div variants={fadeUp} className="mt-3 font-display text-lg font-bold uppercase tracking-wide text-ink">
+        <BlueOval>The Reach</BlueOval>
       </motion.div>
 
       {/* Per-platform stat rows */}
@@ -122,6 +116,32 @@ export function Numbers() {
                 </div>
               </div>
             ))}
+
+            {/* Gender split — one bar showing both sides */}
+            <div>
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="text-sm font-bold uppercase tracking-wide text-ink">Gender</span>
+                <span className="text-xs font-bold uppercase tracking-wide text-ink/70">
+                  Men {gender.men}% · Women {gender.women}%
+                </span>
+              </div>
+              <div className="mt-2 flex h-2.5 w-full overflow-hidden rounded-full bg-ink/10">
+                <motion.span
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${gender.men}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                  className="block h-full bg-brand"
+                />
+                <motion.span
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${gender.women}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                  className="block h-full bg-ink/40"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="mt-6">
@@ -146,19 +166,6 @@ export function Numbers() {
           </OrangePill>
         </motion.div>
       </div>
-
-      <motion.div variants={fadeUp} className="mt-6 border-y border-ink/10 py-4">
-        <p className="font-display text-[11px] font-black uppercase tracking-[0.3em] text-ink/50">
-          As seen in / worked with
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-x-8 gap-y-2">
-          {partners.map((p) => (
-            <span key={p} className="font-display text-sm font-black uppercase tracking-wide text-ink/60 md:text-base">
-              {p}
-            </span>
-          ))}
-        </div>
-      </motion.div>
     </Section>
   );
 }

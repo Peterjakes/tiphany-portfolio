@@ -41,7 +41,7 @@ const comments = [
 const proof = [
   { icon: MapPin, label: "74% Kenya", note: "Instagram audience based in Kenya" },
   { icon: Users, label: "51% aged 25–34", note: "Her largest age group on Instagram" },
-  { icon: Sparkles, label: "50.8% new eyes", note: "Instagram reach from non-followers" },
+  { icon: Sparkles, label: "50.8% new eyes", note: "Instagram views from non-followers" },
 ];
 
 export function AudienceVoice() {
