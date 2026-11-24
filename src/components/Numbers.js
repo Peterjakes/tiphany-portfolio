@@ -1,4 +1,3 @@
-// src/components/Numbers.jsx
 import { motion } from "framer-motion";
 import { Section, BlueOval, OrangePill, ThumbsUpSticker, PhotoPlaceholder, fadeUp } from "./primitives";
 import { IMG } from "./images";
@@ -91,6 +90,26 @@ export function Numbers() {
       <div className="mt-8 flex flex-col gap-6">
         <StatRow {...instagram} />
         <StatRow {...tiktok} />
+
+        {/* Brands-worked-with summary: 19 brands across 6 industries,
+            matching the roster in Clients.jsx. If a brand is added or
+            removed there, update the number here too. */}
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-col gap-1 rounded-3xl bg-ink px-6 py-5 text-paper sm:flex-row sm:items-center sm:gap-6"
+        >
+          <p className="font-display text-[clamp(2.5rem,6vw,4rem)] font-black leading-none text-brand">
+            19
+          </p>
+          <div>
+            <p className="font-display text-base font-black uppercase tracking-wide">
+              Brands Worked With
+            </p>
+            <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest opacity-70">
+              Across beauty, food, fashion, home, hospitality and tech
+            </p>
+          </div>
+        </motion.div>
       </div>
 
       <div className="mt-6 grid flex-1 gap-6 md:grid-cols-3">
